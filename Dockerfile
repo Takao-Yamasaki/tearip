@@ -15,6 +15,11 @@ COPY Gemfile Gemfile.lock /tearip/
 RUN bundle install
 COPY . /tearip
 
+# アセットのプリコンパイル
+RUN bundle exec rails assets:precompile
+# Railsが静的アセットを配信するかどうかの設定
+ENV RAILS_SERVE_STATIC_FILES="true"
+
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
