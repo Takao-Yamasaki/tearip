@@ -20,7 +20,7 @@ default: &default
   host: db
   username: postgres
   port: 5432
-  password: <%= ENV.fetch("POSTGRES_PASSWORD") %>
+  password: <%= ENV.fetch("DATABASE_PASSWORD") %>
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
@@ -77,14 +77,14 @@ test:
 # the values provided in this file. Alternatively, you can specify a connection
 # URL environment variable explicitly:
 #
-#   production:
-#     url: <%= ENV['MY_APP_DATABASE_URL'] %>
+  production:
+    url: <%= ENV['DATABASE_URL'] %>
 #
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-production:
-  <<: *default
-  database: tearip_production
-  username: tearip
-  password: <%= ENV['TEARIP_DATABASE_PASSWORD'] %>
+# production:
+#   <<: *default
+#   database: tearip_production
+#   username: tearip
+#   password: <%= ENV['TEARIP_DATABASE_PASSWORD'] %>
