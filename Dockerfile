@@ -13,6 +13,7 @@ RUN apt-get update && apt-get install -y curl apt-transport-https wget && \
 WORKDIR /tearip
 COPY Gemfile Gemfile.lock /tearip/
 RUN bundle install
+COPY . /tearip
 
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
